@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:routemaster/routemaster.dart';
 import 'package:vlogify/models/board_model.dart';
 
 class BoardCard extends StatelessWidget {
@@ -13,6 +14,7 @@ class BoardCard extends StatelessWidget {
       child: InkWell(
         onTap: () {
           // Handle board tap
+          Routemaster.of(context).push('/b/${board.id}');
         },
         child: Container(
           decoration: BoxDecoration(

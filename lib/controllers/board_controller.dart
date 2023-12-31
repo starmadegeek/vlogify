@@ -137,6 +137,7 @@ class BoardController extends StateNotifier<bool> {
     required File? bannerFile,
     required Uint8List? bannerWebFile,
     required BuildContext context,
+    required String? name,
     required Board board,
   }) async {
     state = true;
@@ -154,7 +155,7 @@ class BoardController extends StateNotifier<bool> {
         (r) => board = board.copyWith(banner: r),
       );
     }
-
+    if (name != null) board = board.copyWith(name: name);
     final res = await _boardRepository.editBoard(board);
     state = false;
     res.fold(

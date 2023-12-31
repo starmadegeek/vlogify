@@ -51,7 +51,6 @@ class _MyAppState extends ConsumerState<MyApp> {
             theme: ref.watch(themeNotifierProvider),
             routerDelegate: RoutemasterDelegate(
               routesBuilder: (context) {
-                print("DATA: $data");
                 if (data != null) {
                   getData(ref, data);
                   if (ref.watch(userProvider) != null) {

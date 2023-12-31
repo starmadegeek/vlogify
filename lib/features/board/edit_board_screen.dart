@@ -28,6 +28,21 @@ class _EditBoardScreenState extends ConsumerState<EditBoardScreen> {
   File? bannerFile;
   Uint8List? bannerWebFile;
 
+  late TextEditingController nameController;
+
+  @override
+  void initState() {
+    super.initState();
+    nameController = TextEditingController(
+        text: ref.read(getBoardByIdProvider(widget.boardId)).value?.name);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    nameController.dispose();
+  }
+
   void selectBannerImage() async {
     final res = await pickImage();
 
@@ -49,6 +64,7 @@ class _EditBoardScreenState extends ConsumerState<EditBoardScreen> {
           bannerFile: bannerFile,
           context: context,
           board: board,
+          name: nameController.text.trim(),
           bannerWebFile: bannerWebFile,
         );
   }
@@ -117,6 +133,20 @@ class _EditBoardScreenState extends ConsumerState<EditBoardScreen> {
                                   ),
                                 ),
                               ],
+                            ),
+                          ),
+                          TextField(
+                            controller: nameController,
+                            decoration: InputDecoration(
+                              filled: true,
+                              hintText: 'Name',
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    const BorderSide(color: Colors.blue),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              border: InputBorder.none,
+                              contentPadding: const EdgeInsets.all(18),
                             ),
                           ),
                         ],

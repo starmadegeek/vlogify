@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:routemaster/routemaster.dart';
 import 'package:vlogify/controllers/board_controller.dart';
 import 'package:vlogify/controllers/vlog_controller.dart';
 import 'package:vlogify/core/common/error_text.dart';
@@ -21,6 +22,14 @@ class BoardScreen extends ConsumerWidget {
         return Scaffold(
           appBar: AppBar(
             title: Text(board.name),
+            actions: [
+              IconButton(
+                onPressed: () {
+                  Routemaster.of(context).push('/edit-board/${board.id}');
+                },
+                icon: const Icon(Icons.edit),
+              ),
+            ],
           ),
           body: ref.watch(getVlogsByBoardProvider(board.id)).when(
                 loading: () => const Loader(),

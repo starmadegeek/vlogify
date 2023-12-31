@@ -18,12 +18,12 @@ class BoardRepository {
 
   FutureVoid createBoard(Board board) async {
     try {
-      var boardDoc = await _boards.doc(board.name).get();
+      var boardDoc = await _boards.doc(board.id).get();
       if (boardDoc.exists) {
         throw 'Board with the same name already exists!';
       }
 
-      return right(_boards.doc(board.name).set(board.toMap()));
+      return right(_boards.doc(board.id).set(board.toMap()));
     } on FirebaseException catch (e) {
       throw e.message!;
     } catch (e) {
@@ -80,7 +80,7 @@ class BoardRepository {
 
   FutureVoid editBoard(Board board) async {
     try {
-      return right(_boards.doc(board.name).update(board.toMap()));
+      return right(_boards.doc(board.id).update(board.toMap()));
     } on FirebaseException catch (e) {
       throw e.message!;
     } catch (e) {

@@ -53,7 +53,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ),
           IconButton(
             onPressed: () {
-              Routemaster.of(context).push('/add-post');
+              Routemaster.of(context).push('/add-vlog');
             },
             icon: const Icon(Icons.add),
           ),
@@ -92,9 +92,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // start video recording
+          Routemaster.of(context).push('record');
         },
         tooltip: 'New Vlog',
-        child: const Icon(Icons.video_camera_back_rounded),
+        child: const Icon(Icons.video_camera_front),
       ),
     );
   }

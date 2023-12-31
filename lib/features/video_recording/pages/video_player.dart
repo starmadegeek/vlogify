@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
+import 'package:vlogify/features/vlog/add_vlog_screen.dart';
 
 class VideoPage extends StatefulWidget {
   const VideoPage({super.key, required this.videoFile});
@@ -35,7 +36,7 @@ class _VideoPageState extends State<VideoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Video 😍"),
+        title: const Text("New Vlog"),
         centerTitle: true,
       ),
       body: Column(
@@ -54,6 +55,18 @@ class _VideoPageState extends State<VideoPage> {
             ),
           ),
         ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (_) => AddVlogScreen(videoFile: widget.videoFile),
+            ),
+          );
+        },
+        tooltip: 'New Vlog',
+        child: const Icon(Icons.send),
       ),
     );
   }

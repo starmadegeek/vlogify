@@ -1,7 +1,7 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:vlogify/core/common/vlog_screen.dart';
+import 'package:routemaster/routemaster.dart';
 import 'package:vlogify/core/providers/other_providers.dart';
 import 'package:vlogify/models/vlog_model.dart';
 
@@ -17,11 +17,7 @@ class VlogCard extends ConsumerWidget {
     return GestureDetector(
       onTap: () {
         // Handle vlog card click, navigate to vlog details screen
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => VlogDetailsScreen(vlog: vlog)),
-        );
+        Routemaster.of(context).push('/vlog/${vlog.id}');
       },
       child: Card(
         // Customize card appearance as needed
