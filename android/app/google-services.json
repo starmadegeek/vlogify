@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "112643227473",
+    "project_id": "vlogify-prod",
+    "storage_bucket": "vlogify-prod.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:112643227473:android:3635202e0efbed87a8dd70",
+        "android_client_info": {
+          "package_name": "geek.starmade.vlogify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "112643227473-b9mt8m2227d3nfhitv84vioeu0pi5ns6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "geek.starmade.vlogify",
+            "certificate_hash": "11f61efde836c59f2d1ad22fd812dc2a9f9574ac"
+          }
+        },
+        {
+          "client_id": "112643227473-ql4cikmsihiepfrvc2k0idak5h8go9h9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARrXG-5M3ZDP2kT8x_z98sadjgibft8BE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "112643227473-ql4cikmsihiepfrvc2k0idak5h8go9h9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
