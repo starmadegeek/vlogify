@@ -87,7 +87,7 @@ class BoardController extends StateNotifier<bool> {
     state = false;
     res.fold((l) => showSnackBar(context, l.message), (r) {
       showSnackBar(context, 'Board created successfully!');
-      Routemaster.of(context).pop();
+      Routemaster.of(context).replace('/b/${board.id}');
     });
   }
 
@@ -160,7 +160,7 @@ class BoardController extends StateNotifier<bool> {
     state = false;
     res.fold(
       (l) => showSnackBar(context, l.message),
-      (r) => Routemaster.of(context).pop(),
+      (r) => Routemaster.of(context).replace('/b/${board.id}'),
     );
   }
 

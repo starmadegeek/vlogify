@@ -84,7 +84,8 @@ class VlogController extends StateNotifier<bool> {
       state = false;
       res.fold((l) => showSnackBar(context, l.message), (r) {
         showSnackBar(context, 'Saved to board successfully!');
-        Routemaster.of(context).pop();
+        // Routemaster.of(context).pop();
+        Routemaster.of(context).replace('/vlog/$vlogId');
       });
     });
   }

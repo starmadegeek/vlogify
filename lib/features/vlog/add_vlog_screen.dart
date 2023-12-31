@@ -1,16 +1,12 @@
 import 'dart:io';
 
-import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:routemaster/routemaster.dart';
-import 'package:video_player/video_player.dart';
 import 'package:vlogify/controllers/auth_controller.dart';
 import 'package:vlogify/controllers/board_controller.dart';
 import 'package:vlogify/controllers/vlog_controller.dart';
 import 'package:vlogify/core/common/error_text.dart';
 import 'package:vlogify/core/common/loader.dart';
-import 'package:vlogify/core/providers/other_providers.dart';
 import 'package:vlogify/core/utils/utils.dart';
 import 'package:vlogify/models/board_model.dart';
 import 'package:vlogify/responsive/responsive.dart';
@@ -32,19 +28,6 @@ class AddVlogScreen extends ConsumerStatefulWidget {
 class _AddVlogTypeScreenState extends ConsumerState<AddVlogScreen> {
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
-  late VideoPlayerController _videoController;
-  @override
-  void initState() {
-    _videoController = VideoPlayerController.file(widget.videoFile);
-    initializeVideo();
-    super.initState();
-  }
-
-  void initializeVideo() async {
-    await _videoController.initialize();
-    _videoController.setLooping(true);
-    _videoController.play();
-  }
 
   List<Board> boards = [];
   Board? selectedBoard;
@@ -53,7 +36,6 @@ class _AddVlogTypeScreenState extends ConsumerState<AddVlogScreen> {
   void dispose() {
     titleController.dispose();
     descriptionController.dispose();
-    _videoController.dispose();
     super.dispose();
   }
 
@@ -76,8 +58,6 @@ class _AddVlogTypeScreenState extends ConsumerState<AddVlogScreen> {
     // final currentTheme = ref.watch(themeNotifierProvider);
     final isLoading = ref.watch(vlogControllerProvider);
     final String uid = ref.watch(userProvider)!.uid;
-    final chewieController =
-        ref.watch(chewieFileControllerProvider(widget.videoFile));
     // final videoFile = ref.watch(videoFileProvider);
 
     return Scaffold(
@@ -145,17 +125,14 @@ class _AddVlogTypeScreenState extends ConsumerState<AddVlogScreen> {
                           loading: () => const Loader(),
                         ),
                     // TODO video display
-                    // VideoPlayer(_videoController),
+                    // Chewie(controller: _chewieController),
                   ],
                 ),
               ),
             ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // start video recording
-          Routemaster.of(context).push('record');
-        },
+        onPressed: saveVlog,
         tooltip: 'Record',
         child: const Icon(Icons.video_camera_front),
       ),

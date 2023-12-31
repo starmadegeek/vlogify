@@ -59,6 +59,7 @@ class _VideoPageState extends State<VideoPage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          _videoController.dispose();
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (_) => AddVlogScreen(videoFile: widget.videoFile),

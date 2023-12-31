@@ -43,7 +43,7 @@ final loggedInRoute = RouteMap(
         ),
     '/vlog/:vlogId': (routeData) => MaterialPage(
           child: VlogDetailsScreen(
-            vlogId: routeData.pathParameters['uid']!,
+            vlogId: routeData.pathParameters['vlogId']!,
           ),
         ),
     // '/vlog/:vlogId/comments': (route) => MaterialPage(
